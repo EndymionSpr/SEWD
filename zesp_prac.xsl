@@ -17,19 +17,19 @@
 </xsl:template>
 <xsl:template match="//NAZWA">
 <li>
-<a href="#1"><xsl:value-of select="."/></a>
+<a href="#NAZWA"><xsl:value-of select="."/></a>
 </li>
 </xsl:template>
 <xsl:template match="//ZESPOLY/ROW">
 <br/>
-<h2 id="1">NAZWA:<xsl:value-of select="NAZWA/."/><br/>
+<h2 id="NAZWA"> NAZWA:<xsl:value-of select="NAZWA/."/><br/>
 ADRES:<xsl:value-of select="ADRES/."/><br/>
 </h2>
 <table border="1">
-<tr>
+<tr> 
 <td>Nazwisko</td>
 <td>Etat</td>
-<td>Zatrudniony</td>
+<td>Zatrudniony</td> 
 <td>Placa pod.</td>
 <td>Id szefa</td>
 </tr>
