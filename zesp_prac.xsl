@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <xsl:template match="ZESPOLY">
 <html>
 <head></head><body>
@@ -10,22 +10,39 @@
 <br/>
 <br/>
 <h3>
-<ul>
 <xsl:apply-templates select="//ZESPOLY/ROW"/>
-</ul>
 </h3>
 </body>
-</html>
+</html>	
 </xsl:template>
 <xsl:template match="//NAZWA">
 <li>
-<xsl:value-of select="."/>
+<a href="#1"><xsl:value-of select="."/></a>
 </li>
 </xsl:template>
 <xsl:template match="//ZESPOLY/ROW">
 <br/>
-NAZWA:<xsl:value-of select="NAZWA/."/><br/>
+<h2 id="1">NAZWA:<xsl:value-of select="NAZWA/."/><br/>
 ADRES:<xsl:value-of select="ADRES/."/><br/>
+</h2>
+<table border="1">
+<tr>
+<td>Nazwisko</td>
+<td>Etat</td>
+<td>Zatrudniony</td>
+<td>Placa pod.</td>
+<td>Id szefa</td>
+</tr>
+<xsl:for-each select="PRACOWNICY/ROW">
+<xsl:sort select="NAZWISKO"/>
+<tr>
+<td><xsl:value-of select="NAZWISKO/."/></td>
+<td><xsl:value-of select="ETAT/."/></td>
+<td><xsl:value-of select="ZATRUDNIONY/."/></td>
+<td><xsl:value-of select="PLACA_POD/."/></td>
+<td><xsl:value-of select="ID_SZEFA/."/></td>
+</tr>
+</xsl:for-each>
+</table>
 </xsl:template>
-
 </xsl:stylesheet>
